@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Summary Review & Change Update — Charity One</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- Fonts: Montserrat for labels, system/Helvetica for answers -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+        <img src="/charity_one_logo.png" alt="Charity One Logo" class="logo" onerror="this.style.display='none'"/>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <div class="card" aria-live="polite">
+
+      <form id="reviewForm" novalidate>
+
+        <!-- Form Title -->
+        <div>
+          <label class="form-title" for="orgName">Summary Review & Change Update</label>
+          <p class="lead">Please review the Summary in your proposal and use this form to let us know if anything has changed. If nothing has changed, type “No changes.” This form does not restart underwriting.</p>
+        </div>
+
+        <!-- Section 1 -->
+        <div class="section">
+            <div class="section-title" for="orgName">Organization Name <span style="color:#d64545">*</span></div>
+            <input id="orgName" name="orgName" class="answer" type="text" required aria-required="true" placeholder="Legal or operating name">
+        </div>
+
+        <!-- Section 2 -->
+
+        <div class="section">
+            <div class="section-title">Did you review the Summary we sent? <span style="color:#d64545">*</span></div>
+
+            <div class="choice-group" role="radiogroup" aria-labelledby="reviewedLabel">
+              <label class="choice-item"><input type="radio" name="reviewed" value="yes" required> Yes</label>
+              <label class="choice-item"><input type="radio" name="reviewed" value="no"> No</label>
+            </div>
+
+          <!-- If No -> show message & disable submit -->
+          <div id="pleaseReviewMsg" class="message hidden" role="status" aria-hidden="true">
+            It looks like you haven't reviewed the Summary yet. Please review the document we sent before completing this form. After reviewing, return and select “Yes” to continue.
+          </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div id="section3" class="section">
+            <div class="section-title" for="changes">Please describe any changes you noticed while reviewing your Summary. <span style="color:#d64545">*</span></div>
+            <textarea id="changes" name="changes" required aria-required="true" placeholder='If nothing has changed, type: "No changes."'></textarea>
+        </div>
+
+        <!-- Section 4 -->
+        <div id="section4" class="section">
+            <div class="section-title" for="files">Upload any documents related to your updates (optional).</div>
+            <p class="lead">Examples: new address document, updated contract, name change.</p>
+            <input id="files" name="files" class="answer" type="file" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" />
+        </div>
+
+        <!-- Section 5 -->
+        <div id="section5" class="section">
+            <div class="section-title" for="changes">I confirm that the information provided is accurate to the best of my knowledge. <span style="color:#d64545">*</span></div>
+            <div style="margin-top:8px;">
+              <label class="choice-item" style="display:inline-flex"><input id="agree" type="checkbox" name="agree" required aria-required="true"> I agree</label>
+          </div>
+        </div>
+
+        <!-- Section 6 -->
+
+        <div class="section">
+            <div class="section-title" for="fullName">Type your full name (serves as your signature). <span style="color:#d64545">*</span></div>
+            <input id="fullName" name="fullName" class="answer" type="text" required placeholder="First and last name">
+        </div>
+
+        <!-- Preview Modal -->
+        <div id="previewModal" class="preview-modal hidden" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+          <div class="preview-dialog" role="document">
+            <header class="preview-header">
+              <h3 id="previewTitle">Review your answers</h3>
+              <button id="closePreview" class="preview-close" aria-label="Close preview">&times;</button>
+            </header>
+
+            <div class="preview-body" id="previewBody">
+              <!-- content injected by JS -->
+            </div>
+
+            <footer class="preview-footer">
+              <button id="editBtn" class="btn secondary">Back / Edit</button>
+              <button id="confirmSubmitBtn" class="btn">Confirm &amp; Submit</button>
+            </footer>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <div class="muted-small">Fields marked * are required</div>
+          <div style="display:flex;gap:10px;">
+            <button type="button" id="previewBtn" class="btn secondary">Preview</button>
+            <button id="submitBtn" class="btn" type="submit">Submit</button>
+          </div>
+        </div>
+
+        <!-- Submission status -->
+        <div id="statusMsg" class="message hidden" aria-hidden="true" style="margin-top:14px;"></div>
+
+      </form>
+    </div>
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
